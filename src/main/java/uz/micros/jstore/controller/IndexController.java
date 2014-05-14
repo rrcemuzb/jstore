@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
     @ResponseBody
     @RequestMapping(value = "/",method = RequestMethod.GET)
-
     public String showIndex(){
-      return "<h2>Hello World from Spring  !!! </h2>";
+      return "<h2>Hello World from Spring  !!! </h2>"+
+              "" +
+              "<a href=\"home\">HOME</a>";
     };
-    @ResponseBody
-    @RequestMapping(value = "/qwerty",method = RequestMethod.GET)
 
-    public String showIndex1(Local local){
-        return "<h2>Hello World from Spring111  !!!  </h2>"+local.getType();
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public String home(){
+        return "home";
     };
 
 }

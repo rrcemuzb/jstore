@@ -1,9 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>HOME html</title>
 </head>
 <body>
-<h2>Hello World from ThemeLeaf !!!! </h2>
+<h2> Hello World from ThemeLeaf !!!! </h2>
+
+    <h3 th:text="${name}"> RRCEM </h3>
+
+    <p>My name is <span th:text="${author.name}"></span></p>
+    <ul>
+        <li th:each="s:${authors}">
+            Name is <span th:text="${s.name}"></span>
+        </li>
+    </ul>
+
+<form action="/save" method="post">
+    <input type="text" name="title"/>
+    <input type="submit" value="SAVE"/>
+
+</form>
+
+<form action="/save2" method="post" th:object="${newauthor}">
+    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{name}"/>
+    <input type="submit" value="SAVE"/>
+
+</form>
+
+
 </body>
 </html>

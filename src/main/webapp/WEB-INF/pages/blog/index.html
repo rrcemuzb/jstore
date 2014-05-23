@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html data-layout-decorator="master">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="master">
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>Blog Index</title>
@@ -7,6 +10,16 @@
 <body>
 <section data-layout-fragment="content">
     <h2 data-th-text="${blog.title}"></h2>
+    <div class="row" th:each="post: ${blog.posts}">
+        <div class="col-md-6">
+            <h2 th:text="${post.subject}"></h2>
+        </div>
+
+
+
+    </div>
+
+
 </section>
 </body>
 </html>

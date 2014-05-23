@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HOME html</title>
+
+   <!-- <link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css"/>-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/resources/css/site.css" type="text/css"/>
+</head>
+<body>
+<div class="container-fluid">
+
+<h2> Hello World from ThemeLeaf !!!! </h2>
+
+    <h3 th:text="${name}"> RRCEM </h3>
+
+    <p class="author-name">My name is <span th:text="${author.name}"></span></p>
+    <ul>
+        <li th:each="s:${authors}">
+            Name is <span th:text="${s.name}"></span>
+        </li>
+    </ul>
+
+<form action="/save" method="post">
+    <input type="text" name="title"/>
+    <input type="submit" value="SAVE"/>
+
+</form>
+
+<form action="/save2" method="post" th:object="${newauthor}">
+    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{name}"/>
+    <input type="submit" value="SAVE"/>
+
+</form>
+</div>
+<script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.1.1/js/bootstrap.min.js}"></script>
+<!--<script src="/resources/js/jquery-2.1.1.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>-->
+<script src="/resources/js/site.js"></script>
+
+</body>
+</html>

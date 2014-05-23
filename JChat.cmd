@@ -1,0 +1,1 @@
+"c:\Program Files\Java\jdk1.8.0\bin\java.exe" -cp "d:\javawork\javamicros\Level 2\24\JChat\out\production\JChat" uz.micros.Main

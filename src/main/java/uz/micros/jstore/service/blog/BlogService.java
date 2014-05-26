@@ -17,7 +17,7 @@ public class BlogService {
 
         for (int k = 0; k < 3; k++) {
             Post post = new Post();
-            post.setSubject("Post ---" + k);
+            post.setSubject("Post ---" + (k+1));
             posts.add(post);
 
         }

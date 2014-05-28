@@ -4,11 +4,21 @@ import java.util.Date;
 import java.util.List;
 
 public class Post {
+    private int id;
     private String subject;
     private String text;
     private Date date;
     private String author;
     private List<Comment> comments;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSubject() {
         return subject;
@@ -20,6 +30,11 @@ public class Post {
 
     public String getText() {
         return text;
+    }
+
+    public String getShorttext() {
+        return text != null && text.length() > 0 ?
+                (text.length() > 100 ? text.substring(0, 99) + "..." : text)  : "";
     }
 
     public void setText(String text) {

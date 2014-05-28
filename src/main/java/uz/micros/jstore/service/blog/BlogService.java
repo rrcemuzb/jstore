@@ -5,6 +5,7 @@ import uz.micros.jstore.entity.blog.Blog;
 import uz.micros.jstore.entity.blog.Post;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,9 +18,16 @@ public class BlogService {
 
         for (int k = 0; k < 3; k++) {
             Post post = new Post();
+            post.setId(k+100);
             post.setSubject("Post ---" + (k+1));
-            posts.add(post);
+            post.setDate(new Date());
+            post.setText("1.«Аэрофлот» отказался летать по 17 маршрутам\n" +
+                    "2.ЦСКА может купить Ахмедова у «Анжи»\n" +
+                    "3.Азербайджанские гимнастки завоевали Кубок мира в Ташкенте\n" +
+                    "4.В Кузнечном переулке хулиганы избили гражданина Узбекистана\n" +
+                    "5.На юге Киргизии проходит международная акция «Фергана - долина дружбы»");
 
+            posts.add(post);
         }
         blog.setPosts(posts);
         return blog;

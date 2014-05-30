@@ -8,17 +8,40 @@
 <body>
 
 <section layout:fragment="content">
-<div class="row">
-    <div class="col-md-6">
-
+<div class="row well">
+    <div class="col-md-6 post">
         <h2 th:text="${post.subject}"></h2>
-
         <p class="post-date" th:text="${post.date}"></p>
         <pre th:text="${post.text}"></pre>
-
     </div>
 </div>
-</section>
+<p><h5>Comments</h5></p>
 
+    <form th:action="@{/blog/comments}" method="post" th:object="${newComment}">
+        <div class="row">
+            <div class="col-md-6">
+                <textarea th:field="*{text}" class="form-control textarea"  cols="30" rows="10" ></textarea>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <button class="btn btn-primary">Add comment</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+        <div class="row well comment" th:each="comment:${post.comments}">
+            <div class="col-md-6">
+                <p class="post-date" th:text="${comment.date}"></p>
+                <p th:text="${comment.author}"></p>
+                <p th:text="${comment.text}"></p>
+            </div>
+
+        </div>
+
+</section>
 </body>
 </html>

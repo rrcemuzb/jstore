@@ -4,3 +4,12 @@
 .post-date{
     color:blue;
 }
+.comment {
+    margin-bottom: 20px;
+}
+.post{
+    padding-left: 0px;
+}
+.textarea{
+    resize: none;
+}

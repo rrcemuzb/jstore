@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import uz.micros.jstore.entity.blog.Comment;
 import uz.micros.jstore.entity.blog.Post;
 import uz.micros.jstore.service.blog.PostService;
 
@@ -19,7 +20,9 @@ public class PostController {
 
         Post post = service.get(id);
 
-        return new ModelAndView("blog/post").addObject("post",post);
+        return new ModelAndView("blog/post")
+                .addObject("post",post)
+                .addObject("newComment",new Comment());
 
     }
 

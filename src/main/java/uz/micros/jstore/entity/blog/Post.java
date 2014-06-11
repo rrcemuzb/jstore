@@ -11,7 +11,6 @@ public class Post {
     private String author;
     private List<Comment> comments;
 
-
     public int getId() {
         return id;
     }
@@ -32,9 +31,10 @@ public class Post {
         return text;
     }
 
-    public String getShorttext() {
-        return text != null && text.length() > 0 ?
-                (text.length() > 100 ? text.substring(0, 99) + "..." : text)  : "";
+    public String getShortText() {
+        return text !=null && text.length() > 0
+                ? (text.length() > 100 ? text.substring(0, 299) + "...":text)
+                : "";
     }
 
     public void setText(String text) {

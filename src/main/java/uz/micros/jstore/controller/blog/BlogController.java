@@ -18,6 +18,7 @@ public class BlogController {
     public String blogIndex(ModelMap map){
 
         Blog blog = service.getBlog();
+
         map.addAttribute("blog", blog);
 
         return "blog/index";

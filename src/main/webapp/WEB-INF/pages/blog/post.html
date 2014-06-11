@@ -1,48 +1,76 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorator="master">
-<head>
-    <title>Posts</title>
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Blog Index</title>
 </head>
 <body>
 
 <section layout:fragment="content">
-<div class="row well">
-    <div class="col-md-6 post">
-        <h2 th:text="${post.subject}"></h2>
-        <p class="post-date" th:text="${post.date}"></p>
-        <pre th:text="${post.text}"></pre>
-    </div>
-</div>
-<p><h5>Comments</h5></p>
 
-    <form th:action="@{/blog/comments}" method="post" th:object="${newComment}">
-        <div class="row">
-            <div class="col-md-6">
-                <textarea th:field="*{text}" class="form-control textarea"  cols="30" rows="10" ></textarea>
+    <div class="row-fluid">
+
+        <div class="col-md-6">
+            <div class="hero-unit">
+                <h2>
+                    <a th:href="@{'/blog/posts/' + ${post.id}}" th:text="${post.subject}">
+
+                    </a>
+                </h2>
+
+                <p th:text="${post.date}" class="post_date"></p>
+
+                <p th:text="${post.text}"></p>
+
+
+                <input type="button" class="btn btn-info btn-xlarge" value="I like it!!!"/>
+
+
             </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="pull-right">
-                    <button class="btn btn-info btn-lg">Add comment</button>
 
+            <h1>Comments</h1>
+
+            <form class="form-horizontal row" th:action="@{/blog/comments}" method="post" th:object = "${newComment}">
+                <div class="form-group">
+                    <label for="inputName" class="col-md-2 control-label">Name</label>
+                    <div class="col-md-10">
+                        <input type="text" id="inputName" class="form-control" placeholder="Name"/>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </form>
-            <br/>
-        <div class="row well comment" th:each="comment:${post.comments}">
-            <div class="col-md-6">
-                <p class="post-date" th:text="${comment.date}"></p>
-                <p th:text="${comment.author}"></p>
-                <p th:text="${comment.text}"></p>
+                <div class="form-group">
+                    <label for="inputComment" class="col-md-2 control-label">Comment</label>
+                    <div class="col-md-10">
+                        <textarea th:field = "*{text}" id="inputComment" cols="61" rows="5"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" value="Submit" class="btn btn-success btn-xlarge  pull-right"/>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row-fluid" th:each="comment : ${post.comments}">
+                <div class="col-md-12 well well-large comment_block">
+                    <p class="post_date" th:text="${comment.date}"></p>
+
+                    <p class="post_author" th:text="${comment.author}"></p>
+
+                    <hr/>
+
+                    <p class="post-text" th:text="${comment.text}"></p>
+                </div>
+
             </div>
 
         </div>
+
+    </div>
+
 
 </section>
+
 </body>
 </html>

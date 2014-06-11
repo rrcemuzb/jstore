@@ -1,8 +1,6 @@
-package uz.micros.jstore.enity;
-
+package uz.micros.jstore.entty;
 
 public class Author {
-
     private String name;
 
     public String getName() {

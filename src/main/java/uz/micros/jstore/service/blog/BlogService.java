@@ -1,35 +1,34 @@
 package uz.micros.jstore.service.blog;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import uz.micros.jstore.entity.blog.Blog;
 import uz.micros.jstore.entity.blog.Post;
+import uz.micros.jstore.repository.PostRepository;
+import uz.micros.jstore.util.DbManager;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class BlogService {
-    public Blog getBlog() {
+
+    @Autowired
+    private PostRepository postRepository;
+
+    public Blog getBlog(){
         Blog blog = new Blog();
         blog.setTitle("jStore Corporate Blog!!!");
 
-        List<Post> posts= new ArrayList<>();
+        List<Post> posts = postRepository.getPosts();
 
-        for (int k = 0; k < 3; k++) {
-            Post post = new Post();
-            post.setId(k+100);
-            post.setSubject("Post ---" + (k+1));
-            post.setDate(new Date());
-            post.setText("1.«Аэрофлот» отказался летать по 17 маршрутам\n" +
-                    "2.ЦСКА может купить Ахмедова у «Анжи»\n" +
-                    "3.Азербайджанские гимнастки завоевали Кубок мира в Ташкенте\n" +
-                    "4.В Кузнечном переулке хулиганы избили гражданина Узбекистана\n" +
-                    "5.На юге Киргизии проходит международная акция «Фергана - долина дружбы»");
+       // posts = DbManager.runQuery("select * from posts");
 
-            posts.add(post);
-        }
         blog.setPosts(posts);
+
         return blog;
     }
 }

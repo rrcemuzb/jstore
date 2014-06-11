@@ -10,21 +10,19 @@ import uz.micros.jstore.entity.blog.Post;
 import uz.micros.jstore.service.blog.PostService;
 
 @Controller
-@RequestMapping ("/blog/posts")
+@RequestMapping("/blog/posts")
 public class PostController {
 
-  @Autowired
-  private PostService service;
+    @Autowired
+    private PostService service;
+
     @RequestMapping("/{id}/**")
-    public ModelAndView getPost( @PathVariable int id){
+    public ModelAndView getPost(@PathVariable int id){
 
         Post post = service.get(id);
 
         return new ModelAndView("blog/post")
-                .addObject("post",post)
-                .addObject("newComment",new Comment());
-
+                .addObject("post", post)
+                .addObject("newComment", new Comment());
     }
-
-
 }

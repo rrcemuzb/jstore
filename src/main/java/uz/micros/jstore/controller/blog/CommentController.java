@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/blog/comments")
+@RequestMapping("blog/comments")
 public class CommentController {
+
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView addcomment(){
+    public ModelAndView add(){
 
         return new ModelAndView("redirect:/blog/posts/100");
     }
-
 }

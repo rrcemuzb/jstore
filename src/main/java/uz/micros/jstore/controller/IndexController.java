@@ -19,7 +19,7 @@ public class IndexController {
 
         List<Author> list;
         if (session.getAttribute("authors") == null) {
-            list = new ArrayList<Author>();
+            list = new ArrayList<>();
             list.add(a);
             list.add(a);
             list.add(a);

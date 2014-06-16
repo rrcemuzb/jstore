@@ -1,15 +1,26 @@
 package uz.micros.jstore.entity.blog;
 
+import org.hibernate.annotations.SqlFragmentAlias;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+@Entity
+@Table(name="posts")
 public class Post {
+    @Id
+    @GeneratedValue
     private int id;
     private String subject;
     private String text;
     private Date date;
     private String author;
-    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "post")
+
+    private Set<Comment> comments;
 
     public int getId() {
         return id;
@@ -57,11 +68,11 @@ public class Post {
         this.author = author;
     }
 
-    public List<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 }

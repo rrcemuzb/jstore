@@ -22,7 +22,7 @@ public class BlogService {
         Blog blog = new Blog();
         blog.setTitle("jStore Corporate Blog!!!");
 
-        List<Post> posts = postRepository.getPosts();
+        List<Post> posts = postRepository.findAll();
         blog.setPosts(posts);
 
         return blog;

@@ -13,7 +13,7 @@
         <webjars-jquery.ver>2.1.0</webjars-jquery.ver>
 
         <spring.ver>4.0.4.RELEASE</spring.ver>
-        <jetty.ver>9.1.5.v20140505</jetty.ver>
+        <jetty.ver>9.2.1.v20140609</jetty.ver>
         <thymeleaf.ver>2.1.3.RELEASE</thymeleaf.ver>
         <jdk.ver>1.7</jdk.ver>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

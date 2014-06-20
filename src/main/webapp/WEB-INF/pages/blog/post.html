@@ -25,7 +25,11 @@
                 <p th:text="${post.date}" class="post_date"></p>
 
                 <p th:text="${post.text}"></p>
+                <div class="pull-right">
+                    <a class="btn btn-default" th:href="@{'/blog/posts/edit/'+${post.id}}">Edit</a>
+                    <a class="btn btn-danger" th:href="@{'/blog/posts/delete/'+${post.id}}">DELETE</a>
 
+                </div>
 
                 <input type="button" class="btn btn-info btn-xlarge" value="I like it!!!"/>
 
@@ -34,20 +38,27 @@
 
             <h1>Comments</h1>
 
-            <form class="form-horizontal row" th:action="@{/blog/comments}" method="post" th:object = "${newComment}">
+            <form class="form-horizontal row" th:action="@{/blog/comments}" method="post" th:object="${newComment}">
+                <input type="hidden" th:field="*{post.id}"/>
+
                 <div class="form-group">
                     <label for="inputName" class="col-md-2 control-label">Name</label>
+
                     <div class="col-md-10">
                         <input type="text" id="inputName" class="form-control" placeholder="Name"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputComment" class="col-md-2 control-label">Comment</label>
+
                     <div class="col-md-10">
-                        <textarea th:field = "*{text}" id="inputComment" cols="61" rows="5"></textarea>
+                        <textarea th:field="*{text}" id="inputComment" cols="61" rows="5"></textarea>
                     </div>
                     <div class="col-md-12">
                         <input type="submit" value="Submit" class="btn btn-success btn-xlarge  pull-right"/>
+
+
+
                     </div>
                 </div>
             </form>
@@ -62,6 +73,7 @@
 
                     <p class="post-text" th:text="${comment.text}"></p>
                 </div>
+
 
             </div>
 

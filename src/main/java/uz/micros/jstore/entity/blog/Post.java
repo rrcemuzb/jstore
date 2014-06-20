@@ -22,7 +22,7 @@ public class Post {
     @Column(nullable = false)
     private String author;
 
-    @OneToMany(mappedBy = "post",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "post",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 
     private Set<Comment> comments;
 

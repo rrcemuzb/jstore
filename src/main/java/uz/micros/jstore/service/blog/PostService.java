@@ -22,4 +22,8 @@ public class PostService {
     public Post get(int id) {
         return postRepository.findOne(id);
     }
+
+    public void delete(int id) {
+        postRepository.delete(id);
+    }
 }

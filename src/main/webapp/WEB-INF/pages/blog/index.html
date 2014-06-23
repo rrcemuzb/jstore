@@ -12,6 +12,7 @@
 
     <div class="hero-unit">
         <h1 th:text = "${blog.title}"></h1>
+        <a th:href="@{/blog/posts/create}">Create New Post</a>
         <div class="row-fluid" th:each = "post : ${blog.posts}">
             <div class="col-md-8 well">
 

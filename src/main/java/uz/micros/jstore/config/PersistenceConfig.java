@@ -30,7 +30,7 @@ public class PersistenceConfig {
     private String dialect;
     @Value("${hibernate.show_sql}")
     private String showql;
-    @Value("${hibernate.update}")
+    @Value("${hibernate.hbm2ddl.auto}")
     private String ddl;
     @Value("${jdbc.user}")
     private String username;
@@ -41,17 +41,17 @@ public class PersistenceConfig {
     @Value("${jdbc.driver}")
     private String driver;
 
-  @Bean
-  public EntityManagerFactory entityManagerFactory(){
-      LocalContainerEntityManagerFactoryBean res = new LocalContainerEntityManagerFactoryBean();
-      res.setPackagesToScan("uz.micros.jstore.entity.blog");
-      res.setDataSource(getDataSource());
-      res.setJpaProperties(getProperties());
-      res.setJpaVendorAdapter(getJpaVendorAdapter());
-      res.afterPropertiesSet();
-      return res.getObject();
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean res = new LocalContainerEntityManagerFactoryBean();
+        res.setPackagesToScan("uz.micros.jstore.entity");
+        res.setDataSource(getDataSource());
+        res.setJpaProperties(getProperties());
+        res.setJpaVendorAdapter(getJpaVendorAdapter());
+        res.afterPropertiesSet();
+        return res.getObject();
 
-  }
+    }
 
     private JpaVendorAdapter getJpaVendorAdapter() {
         HibernateJpaVendorAdapter res = new HibernateJpaVendorAdapter();
@@ -63,11 +63,11 @@ public class PersistenceConfig {
 
     private Properties getProperties() {
         Properties res = new Properties();
-        res.setProperty("hibernate.dialect",dialect);
-        res.setProperty("hibernate.hbm2ddl.auto",ddl);
-        res.setProperty("hibernate.show_sql",showql);
+        res.setProperty("hibernate.dialect", dialect);
+        res.setProperty("hibernate.hbm2ddl.auto", ddl);
+        res.setProperty("hibernate.show_sql", showql);
 
-            return res;
+        return res;
     }
 
     private DataSource getDataSource() {
@@ -77,11 +77,11 @@ public class PersistenceConfig {
         res.setUrl(url);
         res.setUsername(username);
         res.setPassword(password);
-            return res;
+        return res;
     }
 
     @Bean
-     public PlatformTransactionManager transactionManager(){
+    public PlatformTransactionManager transactionManager() {
         JpaTransactionManager res = new JpaTransactionManager();
         res.setEntityManagerFactory(entityManagerFactory());
         return res;

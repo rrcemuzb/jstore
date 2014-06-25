@@ -8,28 +8,14 @@
     <title>Home</title>
 </head>
 <body>
+
 <section layout:fragment="content">
+    Books
+</section>
 
 
-    <h3 th:text="${name}"></h3>
-
-    <p class="author-name"> My name is <span th:text="${author.name}"></span></p>
-
-    <ul>
-        <li th:each="s : ${authors}">
-            Name is <span th:text="${s.name}"></span>
-        </li>
-    </ul>
-
-    <form action="/save" method="post">
-        <input type="text" name="title"/>
-        <input type="submit" value="Save"/>
-    </form>
-
-    <form action="/save2" th:object="${newAuthor}" method="post">
-        <input type="text" th:field="*{name}"/>
-        <input type="submit" value="Save"/>
-    </form>
+<section layout:fragment="sidebar">
+    <div layout:include="store/catalog :: cat_fr"></div>
 </section>
 
 </body>

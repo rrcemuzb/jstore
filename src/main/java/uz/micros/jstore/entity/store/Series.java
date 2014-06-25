@@ -4,22 +4,24 @@ import uz.micros.jstore.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.util.Set;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name = "genres")
-public class Genre extends BaseEntity {
+public class Series extends BaseEntity {
     @Column(unique = true, nullable = false, columnDefinition = "varchar(25)")
     private String title;
 
 
-    @Column(unique = true,columnDefinition = "varchar(255)", name = "description")
+    @Column(unique = true, columnDefinition = "varchar(255)", name = "description")
     private String desc;
 
-    @OneToMany(mappedBy = "author")
-    private Set<Book> books;
+    @Column(insertable = false, updatable = false)
+    private int genre_id;
+
+    @ManyToOne
+    @JoinColumn(name = "genre_id", nullable = false)
+    private Genre genre;
 
     public String getTitle() {
         return title;
@@ -37,12 +39,11 @@ public class Genre extends BaseEntity {
         this.desc = desc;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
-
 }

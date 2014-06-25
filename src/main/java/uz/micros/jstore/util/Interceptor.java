@@ -20,7 +20,7 @@ public class Interceptor extends HandlerInterceptorAdapter{
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
-        response.getWriter().println("<br /><h3>CENSORED!!!</h3>");
+        response.getWriter().println("<br /><h3>COPYRIGHT!!!</h3>");
 
         super.afterCompletion(request, response, handler, ex);
     }
